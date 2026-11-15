@@ -30,6 +30,8 @@ img{max-width:100%;height:auto;display:block}
 .tabs{display:flex;gap:.4rem;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none;padding:2px}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button,.tools button{white-space:nowrap;font-weight:600;font-size:.8rem;padding:.36rem .6rem;border:2px solid var(--ink);background:var(--paper)}
+.tabs button[data-g]{background:var(--tc)}
+.tabs button.gs{margin-left:.5rem}
 .tabs button[aria-current="page"]{background:var(--ink);color:#fff}
 .tabs button:hover,.tools button:hover{background:var(--ink);color:#fff}
 .tools{display:flex;gap:.4rem;flex:none}
@@ -242,7 +244,7 @@ dialog .adr{font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,5v
 </section>
 
 <!-- NOTEBOOK -->
-<section class="view" id="notebook" data-nav="Notebook">
+<section class="view" id="notebook" data-g="sky" data-nav="Notebook">
   <div class="band" style="--c:var(--sky)">
     <div class="eyebrow">01 · Gemini Notebook (bis Juli 2026: NotebookLM)</div>
     <div>
@@ -255,7 +257,7 @@ dialog .adr{font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,5v
 </section>
 
 <!-- BEISPIEL -->
-<section class="view" id="beispiel" data-nav="Beispiel">
+<section class="view" id="beispiel" data-g="sky" data-nav="Beispiel">
   <div class="band tight" style="--c:var(--sky)">
     <div class="eyebrow">01 · Gemini Notebook · Beispiel aus dem Englischunterricht: Werke von Shakespeare</div>
     <div class="gal" id="gal">
@@ -271,7 +273,7 @@ dialog .adr{font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,5v
 </section>
 
 <!-- SELBST ANLEGEN -->
-<section class="view" id="anlegen" data-nav="Selbst anlegen">
+<section class="view" id="anlegen" data-g="sky" data-nav="Selbst anlegen">
   <div class="band" style="--c:var(--sky)">
     <div class="eyebrow">01 · Gemini Notebook · zum Mitbauen</div>
     <h2>So legen Sie ein Notebook an</h2>
@@ -310,7 +312,7 @@ dialog .adr{font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,5v
 </section>
 
 <!-- APPS BAUEN -->
-<section class="view" id="apps" data-nav="Apps bauen">
+<section class="view" id="apps" data-g="peach" data-nav="Apps bauen">
   <div class="band" style="--c:var(--peach)">
     <div class="eyebrow">02 · Apps bauen mit Canva</div>
     <p class="big2">Beschreiben statt programmieren<i>.</i></p>
@@ -337,7 +339,7 @@ dialog .adr{font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,5v
 </section>
 
 <!-- IN CANVA -->
-<section class="view" id="canva" data-nav="In Canva">
+<section class="view" id="canva" data-g="peach" data-nav="In Canva">
   <div class="band" style="--c:var(--peach)">
     <div class="eyebrow">02 · Apps bauen · zum Mitbauen</div>
     <div class="live"><span class="tag">Live im Workshop</span><p>Aus einer Liste mit 30 unregelmäßigen Verben wird ein Übungsspiel für eine 2. Klasse: der „Past Simple Trainer“.</p></div>
@@ -375,7 +377,7 @@ go – went – gehen; come – came – kommen; see – saw – sehen; eat – 
 </section>
 
 <!-- SPIEL -->
-<section class="view" id="spiel" data-nav="Spiel">
+<section class="view" id="spiel" data-g="peach" data-nav="Spiel">
   <div class="band" style="--c:var(--peach)">
     <div class="eyebrow">02 · Apps bauen · das Ergebnis</div>
     <h2>Past Simple Trainer</h2>
@@ -385,7 +387,7 @@ go – went – gehen; come – came – kommen; see – saw – sehen; eat – 
 </section>
 
 <!-- BAUKASTEN -->
-<section class="view" id="baukasten" data-nav="Baukasten">
+<section class="view" id="baukasten" data-g="peach" data-nav="Baukasten">
   <div class="band" style="--c:var(--peach)">
     <div class="eyebrow">02 · Apps bauen · zum Mitbauen</div>
     <h2>Prompt-Baukasten</h2>
@@ -427,7 +429,7 @@ go – went – gehen; come – came – kommen; see – saw – sehen; eat – 
 </section>
 
 <!-- FRAGEN -->
-<section class="view" id="fragen" data-nav="Fragen">
+<section class="view" id="fragen" data-g="mint" data-nav="Fragen">
   <div class="band" style="--c:var(--mint)">
     <div class="eyebrow">03 · Offene Fragen</div>
     <p class="big2">Was ist offen geblieben<i>?</i></p>
@@ -449,7 +451,7 @@ go – went – gehen; come – came – kommen; see – saw – sehen; eat – 
 </section>
 
 <!-- NÄCHSTE WOCHE -->
-<section class="view" id="woche" data-nav="Nächste Woche">
+<section class="view" id="woche" data-g="butter" data-nav="Nächste Woche">
   <div class="band" style="--c:var(--butter)">
     <div class="eyebrow">04 · Nächste Woche</div>
     <p class="big2">Eine Sache reicht<i>.</i></p>
@@ -483,7 +485,7 @@ go – went – gehen; come – came – kommen; see – saw – sehen; eat – 
 var views=[].slice.call(document.querySelectorAll('.view')),ids=views.map(function(v){return v.id;});
 var ALIAS={app:'apps',weiter:'woche'};
 var tabs=document.getElementById('tabs'),cur=0;
-views.forEach(function(v,i){var b=document.createElement('button');b.type='button';b.textContent=v.getAttribute('data-nav');b.onclick=function(){show(i,true);};tabs.appendChild(b);});
+views.forEach(function(v,i){var b=document.createElement('button');b.type='button';b.textContent=v.getAttribute('data-nav');var g=v.getAttribute('data-g'),pg=i?views[i-1].getAttribute('data-g'):null;if(g){b.setAttribute('data-g',g);b.style.setProperty('--tc','var(--'+g+')');}if(i&&g!==pg)b.className='gs';b.onclick=function(){show(i,true);};tabs.appendChild(b);});
 function show(i,push){
   i=Math.max(0,Math.min(views.length-1,i));cur=i;
   views.forEach(function(v,k){v.classList.toggle('on',k===i);});
